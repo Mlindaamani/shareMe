@@ -1,0 +1,304 @@
+{% extends 'bot/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+<div class="conteiner-fluid shadow-sm d-flex justify-content-end  align-items-center mb-5 bg-secondary p-2">
+  <h4 class="mx-5 text-info fw-bold text-end">Welcome, {{ user.username }}</h4>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-3 h-100">
+        <div class="card-body bg-secondary rounded-2 ">
+          <div class="text-center m-2">
+            <img src="{{ user.profile.image.url }}" alt="" style="width: 100; height: 100; border-radius: 50%;">
+          </div>
+          <h5 class="card-title fw-bold text-info">USERNAME: {{ user.username|title }}</h5>
+          <hr class="text-info p-1">
+          <h5 class="card-text fw-bold text-info">EMAIL: {{ user.email }}</h5>
+          <hr class="text-info p-1">
+          <h5 class="card-text fw-bold text-info">BIO: {{ user.profile.bio }}</h5>
+          <hr class="text-info p-1">
+          <h5 class="card-text fw-bold text-info">PHONE: {{ user.profile.phone_number }}</h5>
+          <hr class="text-info p-1">
+          <h5 class="card-text fw-bold text-info">MARRIED: {{ user.profile.married }}</h5>
+          <hr class="text-info p-1">
+          <h5 class="card-text fw-bold text-info">GENDER: {{ user.profile.gender }}</h5>
+          <div class="d-grid gap-2 flex-row ">
+            <button type="button" class="btn btn-info text-light my-3 w-100 fw-bolder " data-bs-toggle="modal"
+              data-bs-target="#updateinfo">Update Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- User matadata -->
+    <div class="col-md-8">
+      <div class="card shadow-sm mb-3 h-100">
+        <div class="card-body">
+          <button type="button" class="btn btn-info text-light my-3 fw-bolder text-end btn-sm rounded-3 "
+            data-bs-toggle="modal" data-bs-target="#createbook">
+            <span class="fw-bold p-1 m-1 text-danger " style="font-size: 30px;">+</span>
+            Add Book
+          </button>
+          <table class="table table-bordered table-striped mb-5 rounded-4 table-hover">
+            <th class="">ISBN</th>
+            <th>NAME</th>
+            <th>AUTHOR</th>
+            <th>PRICE</th>
+            </tr>
+            <tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+            <tr>
+              <td>#678978</td>
+              <td>THE RISING SUN</td>
+              <td>Mlinda</td>
+              <td>$ 452</td>
+
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Update Info Modal -->
+<div class="modal fade" id="updateinfo">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info fw-bold">Edit Your Profile</h5>
+        <button type="button" class="btn-close " data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form method='POST' enctype="multipart/form-data" autocomplete="off">
+          {% csrf_token %}
+          {{ user_form|crispy }}
+          {{ photo_form|crispy }}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info text-light fw-bold ">Update</button>
+        <button type="button" class="btn btn-danger text-light fw-bold " data-bs-dismiss="modal">Cancel</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Create new Book-->
+<div class="modal fade" id="createbook">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info fw-bold">Create New Book</h5>
+        <button type="button" class="btn-close " data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form method='POST' enctype="multipart/form-data" autocomplete="off" action="{% url 'users:create-book' %}">
+          {% csrf_token %} {{create_book_form|crispy}}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info text-light fw-bold ">ADD BOOK</button>
+        <button type="button" class="btn btn-danger text-light fw-bold " data-bs-dismiss="modal">Cancel</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% include 'bot/footer.html' %}
+{% endblock %}

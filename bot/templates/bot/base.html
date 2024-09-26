@@ -1,0 +1,72 @@
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'bot/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'bot/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'bot/css/custom.css' %}" />
+  <title>{% block title %} Home {% endblock %}</title>
+</head>
+
+<body class="bg-secondary-subtle ">
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary ">
+    <div class="container-fluid">
+
+      <a class="navbar-brand text-info fw-bold fw-bold text-decoration-none" href="{% url 'bot:book-list' %}">
+        ShareMe
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navdrop">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navdrop">
+        <ul class="navbar-nav p-3">
+          <li class="nav-item">
+            <a href="{% url 'bot:dashboard' %}" class="nav-link text-info  fw-bold ">Dashboard</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'users:logout' %}" class="nav-link text-info  fw-bold ">Logout</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'users:profile' %}" class="nav-link text-info  fw-bold">Profile</a>
+          </li>
+          {% else %}
+
+          <li class="nav-item">
+            <a href="{% url 'users:login' %}" class="nav-link text-info  fw-bold ">Login</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'users:register' %}" class="nav-link text-info  fw-bold ">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Application Messages-->
+  {% include 'bot/messages.html' %}
+
+  <!-- Main Content -->
+  <main>
+    {% block content %} {% endblock content %}
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    {% block footer %} {% endblock footer %}
+  </footer>
+  <script src="{% static 'bot/js/custom.js' %}"></script>
+  <script src="{% static 'bot/js/bootstrap.js' %}"></script>
+  <script>
+    feather.replace()
+  </script>
+</body>
+
+</html>

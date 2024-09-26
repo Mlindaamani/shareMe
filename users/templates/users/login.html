@@ -1,0 +1,22 @@
+{% extends 'bot/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+<div class="container p-3 mt-5 mb-5" style="width: 500;">
+  <div class="row justify-content-center aligin-items-center">
+    <div class="col">
+      <h4 class="text-info mt-5 mb-4 text-center">Login Now</h4>
+      <form method="post" autocomplete="off" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p>Don't have an account? <a href="{% url 'users:register' %}" class="text-info ">Register here</a></p>
+        <button type="submit" class="btn btn-info form-control text-center m-0 text-light mt-3"
+          formnovalidate="formnovalidate">LOGIN</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

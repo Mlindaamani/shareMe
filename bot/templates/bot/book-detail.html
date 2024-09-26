@@ -1,0 +1,54 @@
+{% extends 'bot/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Book {% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-xl-10 p-4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow border-0">
+            <img src="{{ book.image.url }}" alt="{{ book.name }}" class="card-img-top img-fluid"
+              style="width:100%; height:auto">
+          </div>
+        </div>
+        <div class="col-md-8 d-flex flex-column justify-content-center">
+          <h3 class="text-dark">{{ book.name }}</h3>
+          <p class="lead">$ {{ book.price }}</p>
+          <p class="lead">{{ book.description }}</p>
+          <div class="mt-3">
+            <button type="button" class="btn btn-info text-light my-3 w-25 fw-bolder " data-bs-toggle="modal"
+              data-bs-target="#updateinfo">Share BOOK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Share Modal -->
+<div class="modal fade" id="updateinfo">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary-subtle  border-0 ">
+        <h5 class="modal-title text-info fw-bold ms-5">{{ book.name }}</h5>
+        <button type="button" class="btn-close " data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'bot:share-book' book.id %}" method='POST' novalidate aut>
+          {% csrf_token %}
+          {{ form|crispy}}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info text-light fw-bold ">Share</button>
+        <button type="button" class="btn btn-danger text-light fw-bold " data-bs-dismiss="modal">Cancel</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'bot/base.html' %}
+
+{% block title %} Books {% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+  <div class="row g-5 p-3">
+    <div class="col-md-3">
+      <div class="card shadow border-0 h-100 bg-secondary rounded-4">
+        <div class="card-body">
+          <h4 class="p-2 text-light fw-semibold ">Books Categories</h4>
+          <hr>
+          <ul class="list-unstyled">
+            <li>
+              <a href="{% url 'bot:book-list' %}" {%if not category%}
+                class="text-warning  fw-bold p-3 text-decoration-none" {%endif%}
+                class="text-light fw-bolder p-2 text-decoration-none m-2 ">All</a>
+              <hr>
+            </li>
+            {%for category in categories%}
+            <li>
+              <h5>
+                <a href="{{ category.get_absolute_url }}" class="text-decoration-none text-info fw-bolder p-2">
+                  {{ category.name }}
+                </a>
+              </h5>
+            </li>
+            <hr class="text-bark">
+            {% endfor %}
+          </ul>
+
+          <!-- Search pattern for Book Author -->
+          <h4 class="p-2 text-light fw-bold">Get Books For</h4>
+          <hr>
+          <ul class="list-unstyled">
+            {% for author in authors %}
+            <li>
+              <h5>
+                <a href="{{ author.get_absolute_url }}" class="text-decoration-none text-info   fw-bolder p-2">
+                  {{ author.name }}
+                </a>
+              </h5>
+            </li>
+            <hr class="text-bark">
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h5 class="text-success  p-2 m-2 fw-bolder ">
+        {%if category%} Books for {{category.name|title}} {%else%} {{books|length}} Books found{%endif%}
+      </h5>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
+        {% for book in books %}
+        <div class="col">
+          <div class="card h-100 shadow-sm rounded-4">
+            <a href="{{ book.get_absolute_url }}" class="text-decoration-none">
+              <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.name }}"
+                style="height: 500px; object-fit: cover;">
+            </a>
+            <div class="card-body d-flex flex-column bg-secondary">
+              <a href="{{ book.get_absolute_url }}" class="text-decoration-none">
+                <h3 class="card-title text-info mt-3">{{ book.name }}</h3>
+              </a>
+              <h5 class="card-text mb-2 lead fw-bolder text-warning ">$ {{ book.price }}</h5>
+              <h5 class="card-text lead fw-bolder text-info ">{{ book.description }}</h5>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="container-fluid  bg-body-tertiary h-25 text-center mt-5">
+          <p class="lead text-center p-3 m-3 "> Sorry no results found for category "{{ category.name }}" </p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="mt-4">
+        {% include "bot/pagination.html" with page=books %}
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'bot/footer.html' %}
+{% endblock content %}

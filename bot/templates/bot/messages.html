@@ -1,0 +1,7 @@
+{% if messages %}
+{% for message in messages %}
+<div class="conteiner-fluid alert alert-{{message.tags}} p-2 text-center text-success fw-bold lead">
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
